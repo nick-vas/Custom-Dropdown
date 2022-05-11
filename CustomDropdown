@@ -1,0 +1,78 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class MyDropDown : MonoBehaviour
+{
+    Button MainButton;
+
+    [SerializeField]
+    private string[] options;
+
+    string m_MyString;
+
+    int m_Index;
+
+    //Text m_Text;
+    void Start()
+    {
+        //Fetch the Button GameObject
+        MainButton = GetComponent<Button>();
+
+        //Add listener for when the button is pressed
+        MainButton
+            .onClick
+            .AddListener(delegate ()
+            {
+                Debug.Log("Main Button Works");
+                NewDropDown();
+            });
+    }
+
+    void DropdownValueChanged(Button change)
+    {
+        // if (change.text == "Nanny")
+        // {
+        //     panelManager.EnterDialogue("Nanny");
+        // }
+    }
+
+    void NewDropDown()
+    {
+        //Take each entry in the message List
+        foreach (string text in options)
+        {
+            Instantiate (MainButton);
+        }
+    }
+
+    //This OnGUI function is used here for a quick demonstration. See the [[wiki:UISystem|UI Section]] for more information about setting up your own UI.
+    void OnGUI()
+    {
+        //Press the "Add" Button to add a new entry to the Dropdown
+        // if (GUI.Button(new Rect(0, 0, 100, 40), "Add"))
+        // {
+        //     //Make the index the last number of entries
+        //     //m_Index = m_Messages.Count;
+        //     //Create a temporary option
+        //     //TMP_Dropdown.OptionData temp = new TMP_Dropdown.OptionData();
+        //     //Make the option the data from the TextField
+        //     //temp.text = m_MyString;
+        //     //Update the messages list with the TextField data
+        //     //m_Messages.Add (temp);
+        //     //Add the Textfield data to the Dropdown
+        //     // m_Dropdown.options.Insert (m_Index, temp);
+        // }
+        // //Press the "Remove" button to delete the selected option
+        // if (GUI.Button(new Rect(110, 0, 100, 40), "Remove"))
+        // {
+        //     //Remove the current selected item from the Dropdown from the messages List
+        //     //m_Messages.RemoveAt(m_Dropdown.value);
+        //     //Remove the current selection from the Dropdown
+        //     //m_Dropdown.options.RemoveAt(m_Dropdown.value);
+        // }
+    }
+}
